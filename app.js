@@ -8,6 +8,8 @@ const index = require('./routes/index');
 app.use(express.json());
 app.use(morgan('combined'));
 
+app.use(express.static('public'));
+
 app.use('/', index);
 
 app.listen(3000, () => {
