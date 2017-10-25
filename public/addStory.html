@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <script src="/javascripts/index.js"></script>
+</head>
+<body>
+    <div class="container" id="form">
+        <form id="addStoryForm" method="post" action="/">
+            <div class="form-group">
+              <label for="Name">Name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="what is your name">
+            </div>
+            <div class="form-group">
+                <label for="From">From</label>
+                <input type="text" class="form-control" id="from" name="from" placeholder="Where are you from">
+              </div>
+              <div class="form-group">
+                <label for="Color">Color</label>
+                <input type="text" class="form-control" id="color" name="favoriteColor" placeholder="What is your favorite color">
+              </div>
+              <div class="form-group">
+                <label for="Picture">Picture</label>
+                <input type="text" class="form-control" id="picture" name="picture" placeholder="Url for your picture">
+              </div>
+              <div class="form-group">
+                <label for="PiratesOrNinjas">Pirates or Ninjas</label>
+                <input type="text" class="form-control" id="pn" name="piratesOrNinjas" placeholder="Pirates OR Ninjas">
+              </div>
+              <div class="form-group">
+                <label for="FavoriteCookies">Favorite Cookie</label>
+                <input type="text" class="form-control" id="favoriteCookies" name ="favoriteCookie" placeholder="Favorite Cookies">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+    
+</body>
+</html>

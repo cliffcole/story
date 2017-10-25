@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router()
 
-router.use('/story', (req,res,next) => {
-    story = {
+
+var stories = {
+    1: {
         "name": "Cliff",
         "from": "Cartersville, GA",
         "favoriteColor": "Black",
@@ -10,8 +11,37 @@ router.use('/story', (req,res,next) => {
         "piratesOrNinjas": "Ninja",
         "favoriteCookies": "Sugar cookies"
     }
+};
 
-    res.json(story);
+var storyId = 2;
+
+router.get('/story/:id', (req,res,next) => {
+    var id = req.params.id;
+
+
+    res.json(stories[id]);
+})
+router.get('/stories', (req,res,next) => {
+    console.log(stories);
+    res.json(stories);
+})
+router.post('/story', (req,res,next) => {
+    var newStory = req.body;
+    newStory.id = storyId;
+    stories[storyId] = newStory;
+    console.log(newStory);
+    res.json(newStory);
+})
+
+router.put('/story/:id', (req,res,next) => {
+    var id = req.params.id;
+    var updatedStory = req.body
+
+    if(stories[id]){
+        stories[id] = updatedStory;
+    }
+
+    res.send(updatedStory);
 })
 
 module.exports = router;
