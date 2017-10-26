@@ -4,13 +4,14 @@ const router = express.Router()
 
 var stories = {
     1: {
-        "name": "Cliff",
-        "from": "Cartersville, GA",
-        "favoriteColor": "Black",
-        "picture": "http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/local-experts-maui-where-to-watch-big-wave-surfing.jpg?itok=yPFPYPj4",
-        "piratesOrNinjas": "Ninja",
-        "favoriteCookies": "Sugar cookies"
-    }
+            "name": "Cliff",
+            "from": "Cartersville, GA",
+            "favoriteColor": "Black",
+            "picture": "http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/local-experts-maui-where-to-watch-big-wave-surfing.jpg?itok=yPFPYPj4",
+            "piratesOrNinjas": "Ninja",
+            "favoriteCookies": "Sugar cookies"
+        }
+    
 };
 
 var storyId = 2;
@@ -28,6 +29,7 @@ router.post('/story', (req,res,next) => {
     newStory.id = storyId;
     stories[storyId] = newStory;
     console.log(newStory);
+    storyId++;
     res.json(newStory);
 })
 
@@ -38,8 +40,7 @@ router.put('/story/:id', (req,res,next) => {
     if(stories[id]){
         stories[id] = updatedStory;
     }
-
-    res.send(updatedStory);
+    res.json(updatedStory);
 })
 
 module.exports = router;
