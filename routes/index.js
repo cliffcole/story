@@ -18,7 +18,11 @@ var storyId = 2;
 
 router.get('/story/:id', (req,res,next) => {
     var id = req.params.id;
-    res.json(stories[id]);
+    var story = {}
+    story.id = id;
+    story[id] = stories[id];
+    console.log(story);
+    res.json(story);
 })
 router.get('/stories', (req,res,next) => {
     console.log(stories);

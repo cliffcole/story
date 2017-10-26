@@ -20,33 +20,97 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="#addStory" class="nav-link .addStory" href="#addStory">Add Story</a>
-                    </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>-->
-                </ul>
+    <div id=#body class="container">
+        <nav class="nav nav-tabs" id="myTab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+            <a class="nav-item nav-link" id="nav-addstory-tab" data-toggle="tab" href="#nav-addstory" role="tab" aria-controls="nav-addstory" aria-selected="false">Add Story</a>
+            
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"></div>
+            <div class="tab-pane fade" id="nav-addstory" role="tabpanel" aria-labelledby="nav-addstory-tab">
+                <div class="container" id="form">
+                    <form id="addStoryForm" method="post" action="/">
+                        <div class="form-group">
+                          <label for="Name">Name</label>
+                          <input type="text" class="form-control" id="name" name="name" placeholder="what is your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="From">From</label>
+                            <input type="text" class="form-control" id="from" name="from" placeholder="Where are you from">
+                          </div>
+                          <div class="form-group">
+                            <label for="Color">Color</label>
+                            <input type="text" class="form-control" id="color" name="favoriteColor" placeholder="What is your favorite color">
+                          </div>
+                          <div class="form-group">
+                            <label for="Picture">Picture</label>
+                            <input type="text" class="form-control" id="picture" name="picture" placeholder="Url for your picture">
+                          </div>
+                          <div class="form-group">
+                            <label for="PiratesOrNinjas">Pirates or Ninjas</label>
+                            <input type="text" class="form-control" id="pn" name="piratesOrNinjas" placeholder="Pirates OR Ninjas">
+                          </div>
+                          <div class="form-group">
+                            <label for="FavoriteCookies">Favorite Cookie</label>
+                            <input type="text" class="form-control" id="favoriteCookies" name ="favoriteCookie" placeholder="Favorite Cookies">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                </div>
             </div>
-        </nav>
-    </header>
-    <div class="container" id="main"></div>
+           
+          </div>
+    
+    <!--<div class="container" id="main"></div>-->
+    
+        <div id="editModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Story</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editStoryForm" method="post">
+                        <div class="form-group">
+                          <label for="Name">Name</label>
+                          <input type="text" class="form-control" id="name" name="name" placeholder="what is your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="From">From</label>
+                            <input type="text" class="form-control" id="from" name="from" placeholder="Where are you from">
+                          </div>
+                          <div class="form-group">
+                            <label for="Color">Color</label>
+                            <input type="text" class="form-control" id="color" name="favoriteColor" placeholder="What is your favorite color">
+                          </div>
+                          <div class="form-group">
+                            <label for="Picture">Picture</label>
+                            <input type="text" class="form-control" id="picture" name="picture" placeholder="Url for your picture">
+                          </div>
+                          <div class="form-group">
+                            <label for="PiratesOrNinjas">Pirates or Ninjas</label>
+                            <input type="text" class="form-control" id="pn" name="piratesOrNinjas" placeholder="Pirates OR Ninjas">
+                          </div>
+                          <div class="form-group">
+                            <label for="FavoriteCookies">Favorite Cookie</label>
+                            <input type="text" class="form-control" id="favoriteCookies" name ="favoriteCookie" placeholder="Favorite Cookies">
+                          </div>
+                          </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary saveStory">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    </div>
+
 
 </body>
 

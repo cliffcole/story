@@ -1,3 +1,10 @@
-#main {
-    padding-top: 20px;
+#nav-home {
+    padding: 20px;
+}
+#addStoryForm {
+    padding: 20px;
+}
+
+.storyRow {
+    padding-top: 10px;
 }
