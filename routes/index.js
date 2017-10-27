@@ -1,7 +1,8 @@
 const express = require('express');
-const router = express.Router()
+const router = express.Router() //defined for the router
 
 
+//template for stories
 var stories = {
     1: {
             "name": "Cliff",
@@ -15,21 +16,24 @@ var stories = {
     
 };
 
+//increment starting at 2
 var storyId = 2;
 
+//route for get/read story by id
 router.get('/story/:id', (req, res, next) => {
     var id = req.params.id;
     var story = {}
     story[id] = stories[id]
     
     console.log(story);
-    
     res.json(stories[id]);
 })
+//route to get/read all stories
 router.get('/stories', (req, res, next) => {
     console.log(stories);
     res.json(stories);
 })
+//route to add/create a story
 router.post('/story', (req, res, next) => {
     var newStory = req.body;
     newStory.id = storyId;
@@ -40,6 +44,7 @@ router.post('/story', (req, res, next) => {
     res.json(newStory);
 })
 
+//route to update story
 router.put('/story/:id', (req, res, next) => {
     var id = req.params.id;
     var updatedStory = req.body
@@ -50,6 +55,7 @@ router.put('/story/:id', (req, res, next) => {
     res.json(updatedStory);
 })
 
+//route to delete a story
 router.delete('/story/:id', (req, res, next) => {
     console.log("GOTHERE");
     var id = req.params.id;

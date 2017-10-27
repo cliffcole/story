@@ -1,26 +1,29 @@
 $(() => {
     
+    //initial load function
     loadStories = () => {
         $('#nav-home').empty();
         $.ajax({
-            url: 'http://localhost:3000/stories',
+            url: 'http://localhost:3000/stories', //get stories route from node/express/server api
             method: "GET"
         })
             .done((results) => {
             //console.log(results);
-            renderHtml(results);
+            renderHtml(results); // send results to renderHtml function
         }) .fail((err) => {
             console.log("ERROR:"+ err);
             $('#main').append("<p>Error: "+err+"</p>");
         })
     }
+    // call inital load function
+    loadStories(); 
 
-    loadStories();
-
+    // refresh stories when moving back to page
     $('#nav-home-tab').on('click', (e) => {
         loadStories();
     })
 
+    //not finished working through a bug
     $('#nav-addstory-tab').on('click', (e) => {
         var addStoryForm = $('#addStoryForm')[0];
         console.log(addStoryForm)
@@ -36,14 +39,14 @@ $(() => {
     })
 
     
-
+    // Save story from client and save to stories object on the node/express/server api side
     $('.saveStory').on('click', (e) => {
         e.preventDefault();
         console.log(e.currentTarget);
     
-        var formData = $('#editStoryForm').serialize(); 
+        var formData = $('#editStoryForm').serialize(); //make form date into json object to process on the node/express/server api side
         var id = $('input[name=id]').val();
-        var url = "http://localhost:3000/story/"+id
+        var url = "http://localhost:3000/story/"+id  //send to PUT request to route on node/express/server api side 
         $.ajax({
             url: url,
             method: "PUT",
@@ -51,19 +54,21 @@ $(() => {
             data: formData
         })
         .done((results) => {
-            $('#nav-home-tab').trigger('click');
+            $('#nav-home-tab').trigger('click'); //once results are back redirect to home tab
         })
     })
 
+    //edit modal form
     $('#editModal').on('show.bs.modal', (e) => {
         var id = $(e.relatedTarget).data('id');
         var clickedStory = $(e.relatedTarget);
         
-        var url = "http://localhost:3000/story/"+id
+        var url = "http://localhost:3000/story/"+id //first get story from get story by id route on the node/express/server api side
         $.ajax({
             url: url,
             method: "GET"
         }).done((story) => {
+            //add values to the modal form text fields
             $('input[name="name"').val(story.name);
             $('input[name="from"').val(story.from);
             $('input[name="favoriteColor"').val(story.favoriteColor);
@@ -73,11 +78,12 @@ $(() => {
             $('input[name="id"').val(story.id);
         })
     }) 
-
+    
+    //delete a story 
     $(document).on('click', '.deleteStory', (e) => {
         var clickedButton = $(e.currentTarget);
         var id = clickedButton.data('id');
-        var url = "http://localhost:3000/story/"+id
+        var url = "http://localhost:3000/story/"+id //send delete request to delete route on the node/express/server api side
 
         $.ajax({
             url: url,
@@ -91,6 +97,7 @@ $(() => {
         
         
     }) 
+
     getSingleStory = (id) => {
         $.ajax({
             url: 'http://localhost:3000/story/'+ id,
@@ -108,23 +115,22 @@ $(() => {
     $('form').on('submit', (e) => {
         e.preventDefault();
         
-        var formData = $(e.currentTarget).serialize();
+        var formData = $(e.currentTarget).serialize(); //make data into json type format
 
         $.ajax({
-            url: "http://localhost:3000/story",
+            url: "http://localhost:3000/story", // send POST/Create to post route on the node/express/server api side
             method: "POST",
             data: formData
         })
             .done((data) => {
-                //window.location.href = "/"
-                $('#nav-home-tab').trigger('click');
                 
-                //loadStories();
+                $('#nav-home-tab').trigger('click'); // refresh stories in home tab
+                
             })
         
     });
 
-    //render results from loadStories
+    //render results from loadStories 
     renderHtml = (results) => {
         var renderedHtml = '';
         for(var key in results){
