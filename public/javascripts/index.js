@@ -23,19 +23,13 @@ $(() => {
         loadStories();
     })
 
-    //not finished working through a bug
+    //clear inputfields for whatever reason they are stored! 
     $('#nav-addstory-tab').on('click', (e) => {
-        var addStoryForm = $('#addStoryForm')[0];
-        console.log(addStoryForm)
-        //console.log(e.currentTarget);
-        //Sconsole.log($('#addStoryForm'));
-        /* $('#addStoryForm .formgroup input[name="name"').val();
-        $('input[name="from"').val();
-        $('input[name="favoriteColor"').val();
-        $('input[name="favoriteCookies"').val();
-        $('input[name="picture"').val();
-        $('input[name="piratesOrNinjas"').val();
-        $('input[name="id"').val();  */
+        var inputFields = $('#addStoryForm').find("input")
+        for(var x = 0; x< inputFields.length; x++) {
+            $(inputFields[x]).val('');
+        }
+        
     })
 
     
