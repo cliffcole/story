@@ -7,7 +7,7 @@ $(() => {
             method: "GET"
         })
             .done((results) => {
-            console.log(results);
+            //console.log(results);
             renderHtml(results);
         }) .fail((err) => {
             console.log("ERROR:"+ err);
@@ -21,11 +21,38 @@ $(() => {
         loadStories();
     })
 
+    $('#nav-addstory-tab').on('click', (e) => {
+        var addStoryForm = $('#addStoryForm')[0];
+        console.log(addStoryForm);
+        //console.log(e.currentTarget);
+        //Sconsole.log($('#addStoryForm'));
+        /* $('#addStoryForm .formgroup input[name="name"').val();
+        $('input[name="from"').val();
+        $('input[name="favoriteColor"').val();
+        $('input[name="favoriteCookies"').val();
+        $('input[name="picture"').val();
+        $('input[name="piratesOrNinjas"').val();
+        $('input[name="id"').val();  */
+    })
+
+    
+
     $('.saveStory').on('click', (e) => {
-        console.log(e.currentTarget);
         e.preventDefault();
-        
-        var formData = $(e.currentTarget).serialize(); 
+        console.log(e.currentTarget);
+    
+        var formData = $('#editStoryForm').serialize(); 
+        var id = $('input[name=id]').val();
+        var url = "http://localhost:3000/story/"+id
+        $.ajax({
+            url: url,
+            method: "PUT",
+            dataType: "JSON",
+            data: formData
+        })
+        .done((results) => {
+            $('#nav-home-tab').trigger('click');
+        })
     })
 
     $('#editModal').on('show.bs.modal', (e) => {
@@ -37,30 +64,30 @@ $(() => {
             url: url,
             method: "GET"
         }).done((story) => {
-            //console.log(story);
-            for(var key in story.id){
-                console.log(story.id[key].name);
-            }
-            //console.log(story[1]);
-            /* for(var key in story){
-                //console.log(story);
-                console.log(key);
-                console.log(story[key].name);
-                $('input[name="name"').val(story[key].name);
-                $('input[name="from"').val(story[key].from);
-                $('input[name="favoriteColor"').val(story[key].favoriteColor);
-                $('input[name="favoriteCookies"').val(story[key].favoriteCookies);
-                $('input[name="picture"').val(story[key].picture);
-                $('input[name="piratesOrNinjas"').val(story[key].piratesOrNinjas);
-            } */
-            
+            $('input[name="name"').val(story.name);
+            $('input[name="from"').val(story.from);
+            $('input[name="favoriteColor"').val(story.favoriteColor);
+            $('input[name="favoriteCookies"').val(story.favoriteCookies);
+            $('input[name="picture"').val(story.picture);
+            $('input[name="piratesOrNinjas"').val(story.piratesOrNinjas);
+            $('input[name="id"').val(story.id);
         })
     }) 
 
     $(document).on('click', '.deleteStory', (e) => {
         var clickedButton = $(e.currentTarget);
         var id = clickedButton.data('id');
-        console.log(id);
+        var url = "http://localhost:3000/story/"+id
+
+        $.ajax({
+            url: url,
+            method: "DELETE"
+
+        })
+        .done((results) =>{
+            console.log(results)
+            $('#nav-home-tab').trigger('click');
+        })
         
         
     }) 
@@ -70,7 +97,7 @@ $(() => {
             method: "GET"
         })
             .done((results) => {
-            console.log(results);
+            //console.log(results);
             renderEditHtml(results);
         }) .fail((err) => {
             console.log("ERROR:"+ err);
@@ -124,7 +151,7 @@ $(() => {
 
         $('#nav-home').append(renderedHtml);
     }
-
+ 
 
     renderEditStory = (editStory) => {
         var renderHtml = "";

@@ -53,9 +53,9 @@
                           </div>
                           <div class="form-group">
                             <label for="FavoriteCookies">Favorite Cookie</label>
-                            <input type="text" class="form-control" id="favoriteCookies" name ="favoriteCookie" placeholder="Favorite Cookies">
+                            <input type="text" class="form-control" id="favoriteCookies" name="favoriteCookies" placeholder="Favorite Cookies">
                           </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary submitButton">Submit</button>
                       </form>
                 </div>
             </div>
@@ -75,34 +75,35 @@
                 </div>
                 <div class="modal-body">
                     <form id="editStoryForm" method="post">
-                        <div class="form-group">
+                        <div class="form-group1">
                           <label for="Name">Name</label>
                           <input type="text" class="form-control" id="name" name="name" placeholder="what is your name">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group1">
                             <label for="From">From</label>
                             <input type="text" class="form-control" id="from" name="from" placeholder="Where are you from">
                           </div>
-                          <div class="form-group">
+                          <div class="form-group1">
                             <label for="Color">Color</label>
                             <input type="text" class="form-control" id="color" name="favoriteColor" placeholder="What is your favorite color">
                           </div>
-                          <div class="form-group">
+                          <div class="form-group1">
                             <label for="Picture">Picture</label>
                             <input type="text" class="form-control" id="picture" name="picture" placeholder="Url for your picture">
                           </div>
-                          <div class="form-group">
+                          <div class="form-group1">
                             <label for="PiratesOrNinjas">Pirates or Ninjas</label>
                             <input type="text" class="form-control" id="pn" name="piratesOrNinjas" placeholder="Pirates OR Ninjas">
                           </div>
-                          <div class="form-group">
+                          <div class="form-group1">
                             <label for="FavoriteCookies">Favorite Cookie</label>
-                            <input type="text" class="form-control" id="favoriteCookies" name ="favoriteCookie" placeholder="Favorite Cookies">
+                            <input type="text" class="form-control" id="favoriteCookies" name ="favoriteCookies" placeholder="Favorite Cookies">
                           </div>
+                          <input type="hidden" class="form-control" id="id" name="id">
                           </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary saveStory">Save changes</button>
+                  <button type="button" class="btn btn-primary saveStory" data-dismiss="modal">Save changes</button>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
