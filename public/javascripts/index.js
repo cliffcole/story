@@ -149,7 +149,7 @@ $(() => {
         }
         
 
-        $('#nav-home').append(renderedHtml);
+        $('#nav-home'). (renderedHtml);
     }
  
 
