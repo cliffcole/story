@@ -23,7 +23,7 @@ $(() => {
 
     $('#nav-addstory-tab').on('click', (e) => {
         var addStoryForm = $('#addStoryForm')[0];
-        console.log(addStoryForm);
+        console.log(addStoryForm)
         //console.log(e.currentTarget);
         //Sconsole.log($('#addStoryForm'));
         /* $('#addStoryForm .formgroup input[name="name"').val();
@@ -149,7 +149,7 @@ $(() => {
         }
         
 
-        $('#nav-home'). (renderedHtml);
+        $('#nav-home').append(renderedHtml);
     }
  
 
